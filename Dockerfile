@@ -2,7 +2,7 @@ FROM centos:centos7
 
 MAINTAINER zdravko@octoon.net <zdravko@octoon.net>
 
-RUN yum install -y wget git tar java-1.8.0-openjdk-headless
+RUN yum install -y net-tools openssh-server vim wget git tar java-1.8.0-openjdk-headless
 
 ENV JAVA_HOME /usr/lib/jvm/jre
 
@@ -13,4 +13,4 @@ RUN rm keycloak-1.9.1.Final.tar.gz
 
 CMD ["/opt/keycloak-1.9.1.Final/bin/standalone.sh", "-b", "0.0.0.0"]
 
-EXPOSE 8080 9990
+EXPOSE 22 8080 9990
