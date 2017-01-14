@@ -8,6 +8,7 @@ WORKDIR /opt
 RUN wget https://downloads.jboss.org/keycloak/1.9.1.Final/keycloak-1.9.1.Final.tar.gz
 RUN tar xvfp keycloak-1.9.1.Final.tar.gz
 RUN rm keycloak-1.9.1.Final.tar.gz
+RUN /opt/keycloak-1.9.1.Final/bin/add-user.sh -u admin -p password
 
 EXPOSE 8080 9990
 
