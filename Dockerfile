@@ -1,10 +1,8 @@
-FROM centos:centos7
+FROM valerianomanassero/java-centos:latest
 
 MAINTAINER zdravko@octoon.net <zdravko@octoon.net>
 
-RUN yum install -y net-tools openssh-server vim wget git tar java-1.8.0-openjdk-headless
-
-ENV JAVA_HOME /usr/lib/jvm/jre
+RUN yum install -y net-tools openssh-server vim wget git tar
 
 WORKDIR /opt
 RUN wget https://downloads.jboss.org/keycloak/1.9.1.Final/keycloak-1.9.1.Final.tar.gz
