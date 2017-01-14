@@ -13,6 +13,7 @@ RUN rm keycloak-1.9.1.Final.tar.gz
 
 RUN systemctl enable sshd.service
 
+CMD ["systemctl start sshd.service"]
 CMD ["/opt/keycloak-1.9.1.Final/bin/standalone.sh", "-b", "0.0.0.0"]
 
 EXPOSE 22 8080 9990
