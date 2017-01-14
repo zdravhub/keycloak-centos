@@ -12,4 +12,4 @@ RUN /opt/keycloak-1.9.1.Final/bin/add-user.sh -u admin -p password
 
 EXPOSE 8080 9990
 
-CMD ["/opt/keycloak-1.9.1.Final/bin/standalone.sh", "-b=0.0.0.0", "-bmanagement=0.0.0.0"]
+CMD /opt/keycloak-1.9.1.Final/bin/standalone.sh -c standalone-full-ha.xml -b 0.0.0.0" -bmanagement 0.0.0.0"
