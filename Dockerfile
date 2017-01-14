@@ -13,6 +13,5 @@ RUN rm keycloak-1.9.1.Final.tar.gz
 
 EXPOSE 22 8080 9990
 
-RUN /usr/sbin/sshd -D
-
+CMD /usr/sbin/sshd -D
 CMD ["/opt/keycloak-1.9.1.Final/bin/standalone.sh", "-b", "0.0.0.0"]
