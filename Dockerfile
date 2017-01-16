@@ -32,4 +32,4 @@ RUN /opt/keycloak-1.9.1.Final/bin/add-user-wildfly.sh -u admin -p password
 
 EXPOSE 8080 9990
 
-CMD ["/opt/keycloak-1.9.1.Final/bin/standalone.sh","-c","/opt/keycloak-1.9.1.Final/standalone/configuration/standalone-ha.xml","-b","0.0.0.0","-bmanagement","0.0.0.0"]
+CMD ["/opt/keycloak-1.9.1.Final/bin/standalone.sh","-c","standalone-ha.xml","-b","0.0.0.0","-bmanagement","0.0.0.0"]
