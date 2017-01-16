@@ -5,13 +5,18 @@ MAINTAINER zdravko@octoon.net <zdravko@octoon.net>
 RUN yum install -y net-tools vim wget git tar
 
 WORKDIR /opt
+
 RUN wget http://download.jboss.org/wildfly/10.0.0.Final/wildfly-10.0.0.Final.tar.gz
 RUN wget http://downloads.jboss.org/keycloak/1.9.1.Final/keycloak-overlay-1.9.1.Final.tar.gz
+
 RUN tar xvfp wildfly-10.0.0.Final.tar.gz
 RUN rm wildfly-10.0.0.Final.tar.gz
-RUN cd /opt/wildfly-10.0.0.Final/
-RUN tar xvfp /opt/keycloak-overlay-1.9.1.Final.tar.gz
-RUN rm /opt/keycloak-overlay-1.9.1.Final.tar.gz
+
+RUN mv /opt/keycloak-overlay-1.9.1.Final.tar.gz /opt/wildfly-10.0.0.Final/
+RUN cd /opt/wildfly-10.0.0.Final
+RUN tar xvfp keycloak-overlay-1.9.1.Final.tar.gz
+RUN rm /opt/wildfly-10.0.0.Final/keycloak-overlay-1.9.1.Final.tar.gz
+
 RUN wget https://jdbc.postgresql.org/download/postgresql-9.4.1212.jar
 RUN mkdir -p /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/
 RUN mv /opt/postgresql-9.4.1212.jar /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/
