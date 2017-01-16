@@ -21,7 +21,7 @@ RUN echo '<dependencies>' >> /opt/keycloak-1.9.1.Final/modules/org/postgresql/ma
 RUN echo '<module name="javax.api"/>' >> /opt/keycloak-1.9.1.Final/modules/org/postgresql/main/module.xml
 RUN echo '<module name="javax.transaction.api"/>' >> /opt/keycloak-1.9.1.Final/modules/org/postgresql/main/module.xml
 RUN echo '</dependencies>' >> /opt/keycloak-1.9.1.Final/modules/org/postgresql/main/module.xml
-Run echo '</module>' >> /opt/keycloak-1.9.1.Final/modules/org/postgresql/main/module.xml
+RUN echo '</module>' >> /opt/keycloak-1.9.1.Final/modules/org/postgresql/main/module.xml
 
 RUN /opt/keycloak-1.9.1.Final/bin/add-user.sh -u admin -p password
 
