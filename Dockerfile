@@ -18,16 +18,19 @@ RUN cd /opt/wildfly-10.0.0.Final && tar xvfp keycloak-overlay-1.9.1.Final.tar.gz
 RUN wget https://jdbc.postgresql.org/download/postgresql-9.4.1212.jar
 RUN mkdir -p /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/
 RUN mv /opt/postgresql-9.4.1212.jar /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/
-RUN echo '<?xml version="1.0" ?>' > /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
-RUN echo '<module xmlns="urn:jboss:module:1.1" name="org.postgresql">' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
-RUN echo '<resources>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
-RUN echo '<resource-root path="postgresql-9.4.1212.jar"/>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
-RUN echo '</resources>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
-RUN echo '<dependencies>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
-RUN echo '<module name="javax.api"/>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
-RUN echo '<module name="javax.transaction.api"/>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
-RUN echo '</dependencies>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
-RUN echo '</module>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
+
+ADD modules/org/postgresql/main/module.xml /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/
+
+# RUN echo '<?xml version="1.0" ?>' > /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
+# RUN echo '<module xmlns="urn:jboss:module:1.1" name="org.postgresql">' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
+# RUN echo '<resources>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
+# RUN echo '<resource-root path="postgresql-9.4.1212.jar"/>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
+# RUN echo '</resources>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
+# RUN echo '<dependencies>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
+# RUN echo '<module name="javax.api"/>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
+# RUN echo '<module name="javax.transaction.api"/>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
+# RUN echo '</dependencies>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
+# RUN echo '</module>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
 
 RUN /opt/wildfly-10.0.0.Final/bin/add-user.sh -u admin -p password
 
