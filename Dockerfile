@@ -2,6 +2,8 @@ FROM valerianomanassero/java-centos:latest
 
 MAINTAINER zdravko@octoon.net <zdravko@octoon.net>
 
+RUN hostname -b wildfly
+
 RUN yum install -y net-tools vim wget git tar
 
 WORKDIR /opt
@@ -21,22 +23,7 @@ RUN mv /opt/postgresql-9.4.1212.jar /opt/wildfly-10.0.0.Final/modules/org/postgr
 
 ADD modules/org/postgresql/main/module.xml /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/
 
-# RUN echo '<?xml version="1.0" ?>' > /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
-# RUN echo '<module xmlns="urn:jboss:module:1.1" name="org.postgresql">' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
-# RUN echo '<resources>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
-# RUN echo '<resource-root path="postgresql-9.4.1212.jar"/>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
-# RUN echo '</resources>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
-# RUN echo '<dependencies>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
-# RUN echo '<module name="javax.api"/>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
-# RUN echo '<module name="javax.transaction.api"/>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
-# RUN echo '</dependencies>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
-# RUN echo '</module>' >> /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/module.xml
-
 RUN /opt/wildfly-10.0.0.Final/bin/add-user.sh -u admin -p password
-
-# RUN cp -a /opt/wildfly-10.0.0.Final/bin/add-user.sh /opt/wildfly-10.0.0.Final/bin/add-user-wildfly.sh
-# RUN sed -i 's/org.keycloak.keycloak-wildfly-adduser/org.jboss.as.domain-add-user/g' /opt/wildfly-10.0.0.Final/bin/add-user-wildfly.sh
-# RUN /opt/wildfly-10.0.0.Final/bin/add-user-wildfly.sh -u admin -p password
 
 EXPOSE 8080 9990
 
