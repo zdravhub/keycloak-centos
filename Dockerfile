@@ -20,6 +20,7 @@ RUN mkdir -p /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/
 RUN mv /opt/postgresql-9.4.1212.jar /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/
 
 ADD modules/org/postgresql/main/module.xml /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/
+ADD standalone/configuration/standalone-full-ha.xml /opt/wildfly-10.0.0.Final/standalone/configuration/standalone-full-ha.xml
 
 RUN /opt/wildfly-10.0.0.Final/bin/add-user.sh -u admin -p password
 
