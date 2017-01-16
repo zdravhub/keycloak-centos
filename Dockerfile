@@ -2,8 +2,6 @@ FROM valerianomanassero/java-centos:latest
 
 MAINTAINER zdravko@octoon.net <zdravko@octoon.net>
 
-RUN hostname -b wildfly
-
 RUN yum install -y net-tools vim wget git tar
 
 WORKDIR /opt
