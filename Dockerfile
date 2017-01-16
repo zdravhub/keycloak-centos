@@ -13,9 +13,7 @@ RUN tar xvfp wildfly-10.0.0.Final.tar.gz
 RUN rm wildfly-10.0.0.Final.tar.gz
 
 RUN mv /opt/keycloak-overlay-1.9.1.Final.tar.gz /opt/wildfly-10.0.0.Final/
-RUN cd /opt/wildfly-10.0.0.Final
-RUN tar xvfp keycloak-overlay-1.9.1.Final.tar.gz
-RUN rm /opt/wildfly-10.0.0.Final/keycloak-overlay-1.9.1.Final.tar.gz
+RUN cd /opt/wildfly-10.0.0.Final && tar xvfp keycloak-overlay-1.9.1.Final.tar.gz && rm keycloak-overlay-1.9.1.Final.tar.gz
 
 RUN wget https://jdbc.postgresql.org/download/postgresql-9.4.1212.jar
 RUN mkdir -p /opt/wildfly-10.0.0.Final/modules/org/postgresql/main/
