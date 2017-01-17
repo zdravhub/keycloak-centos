@@ -24,6 +24,10 @@ ADD standalone/configuration/standalone-full-ha.xml /opt/wildfly-10.0.0.Final/st
 
 RUN /opt/wildfly-10.0.0.Final/bin/add-user.sh -u admin -p password
 
+RUN cp -a /opt/wildfly-10.0.0.Final/bin/add-user.sh /opt/wildfly-10.0.0.Final/bin/add-user-keycloak.sh
+RUN sed -i 's/org.jboss.as.domain-add-user/org.keycloak.keycloak-wildfly-adduser/g' /opt/wildfly-10.0.0.Final/bin/add-user-keycloak.sh
+RUN /opt/wildfly-10.0.0.Final/bin/add-user-keycloak.sh.sh -u admin -p password
+
 EXPOSE 8080 9990
 
 CMD ["/opt/wildfly-10.0.0.Final/bin/standalone.sh","-c","standalone-full-ha.xml","-b","0.0.0.0","-bmanagement","0.0.0.0"]
