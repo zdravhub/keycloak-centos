@@ -2,7 +2,7 @@ FROM valerianomanassero/java-centos:latest
 
 MAINTAINER zdravko@octoon.net <zdravko@octoon.net>
 
-RUN yum install -y net-tools vim wget git tar
+RUN yum install -y net-tools vim wget git tar openssh-server
 
 WORKDIR /opt
 
@@ -27,6 +27,8 @@ RUN /opt/wildfly-10.0.0.Final/bin/add-user.sh -u admin -p password
 RUN cp -a /opt/wildfly-10.0.0.Final/bin/add-user.sh /opt/wildfly-10.0.0.Final/bin/add-user-keycloak.sh
 RUN sed -i 's/org.jboss.as.domain-add-user/org.keycloak.keycloak-wildfly-adduser/g' /opt/wildfly-10.0.0.Final/bin/add-user-keycloak.sh
 RUN /opt/wildfly-10.0.0.Final/bin/add-user-keycloak.sh -u admin -p password
+
+RUN echo -e "password\npassword" | (passwd --stdin root)
 
 COPY docker-entrypoint.sh /
 RUN chmod 755 /docker-entrypoint.sh
