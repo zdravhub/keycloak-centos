@@ -29,5 +29,4 @@ RUN sed -i 's/org.jboss.as.domain-add-user/org.keycloak.keycloak-wildfly-adduser
 RUN /opt/wildfly-10.0.0.Final/bin/add-user-keycloak.sh -u admin -p password
 
 EXPOSE 8080 9990
-
-CMD ["/opt/wildfly-10.0.0.Final/bin/standalone.sh","-c","standalone-full-ha.xml","-b","0.0.0.0","-bmanagement","0.0.0.0"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
