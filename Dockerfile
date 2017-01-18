@@ -29,6 +29,7 @@ RUN sed -i 's/org.jboss.as.domain-add-user/org.keycloak.keycloak-wildfly-adduser
 RUN /opt/wildfly-10.0.0.Final/bin/add-user-keycloak.sh -u admin -p password
 
 RUN echo -e "password\npassword" | (passwd --stdin root)
+RUN sed -i 's/#PermitRootLogin yes/PermitRootLogin yes/g' /etc/ssh/sshd_config
 
 COPY docker-entrypoint.sh /
 RUN chmod 755 /docker-entrypoint.sh
