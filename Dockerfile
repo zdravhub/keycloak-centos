@@ -36,5 +36,5 @@ RUN ssh-keygen -f /etc/ssh/ssh_host_dsa_key -N '' -t dsa
 COPY docker-entrypoint.sh /
 RUN chmod 755 /docker-entrypoint.sh
 
-EXPOSE 22
+EXPOSE 22 8080 9990
 ENTRYPOINT ["/docker-entrypoint.sh"]
