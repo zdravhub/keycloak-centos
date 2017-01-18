@@ -29,6 +29,7 @@ RUN sed -i 's/org.jboss.as.domain-add-user/org.keycloak.keycloak-wildfly-adduser
 RUN /opt/wildfly-10.0.0.Final/bin/add-user-keycloak.sh -u admin -p password
 
 COPY docker-entrypoint.sh /
+RUN chmod 755 /docker-entrypoint.sh
 
 EXPOSE 8080 9990
 ENTRYPOINT ["/docker-entrypoint.sh"]
