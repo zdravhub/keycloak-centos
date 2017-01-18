@@ -33,5 +33,5 @@ RUN echo -e "password\npassword" | (passwd --stdin root)
 COPY docker-entrypoint.sh /
 RUN chmod 755 /docker-entrypoint.sh
 
-EXPOSE 8080 9990
+EXPOSE 22 8080 9990
 ENTRYPOINT ["/docker-entrypoint.sh"]
