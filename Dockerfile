@@ -32,8 +32,8 @@ RUN echo -e "password\npassword" | (passwd --stdin root)
 RUN sed -i 's/#PermitRootLogin yes/PermitRootLogin yes/g' /etc/ssh/sshd_config
 RUN ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa
 RUN ssh-keygen -f /etc/ssh/ssh_host_dsa_key -N '' -t dsa
-RUN ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t ecdsa
-RUN ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t ed25519
+RUN ssh-keygen -f /etc/ssh/ssh_host_ecdsa_key -N '' -t ecdsa
+RUN ssh-keygen -f /etc/ssh/ssh_host_ed25519_key -N '' -t ed25519
 
 COPY docker-entrypoint.sh /
 RUN chmod 755 /docker-entrypoint.sh
