@@ -27,6 +27,7 @@
         <extension module="org.jboss.as.weld"/>
         <extension module="org.wildfly.extension.batch.jberet"/>
         <extension module="org.keycloak.keycloak-server-subsystem"/>
+        <extension module="org.keycloak.keycloak-adapter-subsystem"/>
         <extension module="org.wildfly.extension.bean-validation"/>
         <extension module="org.wildfly.extension.clustering.singleton"/>
         <extension module="org.wildfly.extension.io"/>
@@ -448,6 +449,11 @@
                         <auth-module code="Dummy"/>
                     </authentication-jaspi>
                 </security-domain>
+                <security-domain name="keycloak">
+                    <authentication>
+                        <login-module code="org.keycloak.adapters.jboss.KeycloakLoginModule" flag="required"/>
+                    </authentication>
+                </security-domain>
             </security-domains>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:singleton:1.0">
@@ -501,6 +507,7 @@
         <subsystem xmlns="urn:jboss:domain:keycloak-server:1.1">
             <web-context>auth</web-context>
         </subsystem>
+        <subsystem xmlns="urn:jboss:domain:keycloak:1.1"/>
         <subsystem xmlns="urn:jboss:domain:weld:3.0"/>
     </profile>
     <interfaces>
