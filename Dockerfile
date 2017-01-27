@@ -42,5 +42,5 @@ RUN ssh-keygen -f /etc/ssh/ssh_host_ed25519_key -N '' -t ed25519
 COPY docker-entrypoint.sh /
 RUN chmod 755 /docker-entrypoint.sh
 
-EXPOSE 22 8080 9990
+EXPOSE 22 8080 8443 9990
 ENTRYPOINT ["/docker-entrypoint.sh"]
